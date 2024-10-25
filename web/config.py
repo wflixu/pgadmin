@@ -87,10 +87,8 @@ NODE_BLACKLIST = []
 #       SESSION_DB_PATH, STORAGE_DIR, KERBEROS_CCACHE_DIR, and
 #       AZURE_CREDENTIAL_CACHE_DIR
 
-if (not hasattr(builtins, 'SERVER_MODE')) or builtins.SERVER_MODE is None:
-    SERVER_MODE = True
-else:
-    SERVER_MODE = builtins.SERVER_MODE
+
+SERVER_MODE = builtins.SERVER_MODE
 
 # HTTP headers to search for CSRF token when it is not provided in the form.
 # Default is ['X-CSRFToken', 'X-CSRF-Token']
@@ -213,23 +211,7 @@ APP_VERSION_PARAM = 'ver'
 # Add the internal version param to below extensions only
 APP_VERSION_EXTN = ('.css', '.js', '.html', '.svg', '.png', '.gif', '.ico')
 
-# Data directory for storage of config settings etc. This shouldn't normally
-# need to be changed - it's here as various other settings depend on it.
-# On Windows, we always store data in %APPDATA%\$(APP_WIN_PATH). On other
-# platforms, if we're in server mode we use /var/lib/$(APP_PATH),
-# otherwise ~/.$(APP_PATH)
-if IS_WIN:
-    # Use the short path on windows
-    DATA_DIR = os.path.realpath(
-        os.path.join(fs_short_path(env('APPDATA')), APP_WIN_PATH)
-    )
-else:
-    if SERVER_MODE:
-        DATA_DIR = os.path.join('/var/lib/', APP_PATH)
-    else:
-        DATA_DIR = os.path.realpath(
-            os.path.expanduser('~/' + '.' + APP_PATH + '/')
-        )
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/"))
 
 # An optional login banner to show security warnings/disclaimers etc. at
 # login and password recovery etc. HTML may be included for basic formatting,
@@ -479,15 +461,11 @@ DEFAULT_BINARY_PATHS = {
 
 FIXED_BINARY_PATHS = {
     "pg": "",
-    "pg-12": "",
-    "pg-13": "",
     "pg-14": "",
     "pg-15": "",
     "pg-16": "",
     "pg-17": "",
     "ppas": "",
-    "ppas-12": "",
-    "ppas-13": "",
     "ppas-14": "",
     "ppas-15": "",
     "ppas-16": "",
@@ -583,7 +561,7 @@ ALLOW_SAVE_TUNNEL_PASSWORD = False
 # Master password is used to encrypt/decrypt saved server passwords
 # Applicable for desktop mode only
 ##########################################################################
-MASTER_PASSWORD_REQUIRED = True
+MASTER_PASSWORD_REQUIRED = False
 ##########################################################################
 
 ##########################################################################
@@ -593,7 +571,7 @@ MASTER_PASSWORD_REQUIRED = True
 # if MASTER_PASSWORD_REQUIRED is set to True. Note: this is applicable only
 # in case of Desktop mode.
 ##########################################################################
-USE_OS_SECRET_STORAGE = True
+USE_OS_SECRET_STORAGE = False
 ##########################################################################
 
 # pgAdmin encrypts the database connection and ssh tunnel password using a

@@ -374,7 +374,6 @@ def gravatar(username):
 
 @blueprint.route("/")
 @pgCSRFProtect.exempt
-@pga_login_required
 def index():
     """Render and process the main browser window."""
 

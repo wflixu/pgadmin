@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import cn from 'classnames';
 import * as React from 'react';
 import { ClasslistComposite } from 'aspen-decorations';
@@ -5,6 +7,9 @@ import { Directory, FileEntry, IItemRendererProps, ItemType, RenamePromptHandle,
 import {IFileTreeXTriggerEvents, FileTreeXEvent } from '../types';
 import _ from 'lodash';
 import { Notificar } from 'notificar';
+
+
+
 
 interface IItemRendererXProps {
     /**

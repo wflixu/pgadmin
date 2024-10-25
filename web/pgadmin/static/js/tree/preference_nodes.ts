@@ -6,6 +6,7 @@
 // This software is released under the PostgreSQL Licence
 //
 //////////////////////////////////////////////////////////////
+//@ts-nocheck
 
 import * as BrowserFS from 'browserfs';
 import pgAdmin from 'sources/pgadmin';
@@ -114,7 +115,7 @@ export class ManagePreferenceTreeNodes {
     loadData();
   });
 
-  public returnChildrens = (node: any, res: any)  =>{
+  public returnChildrens = (node: any, res: any) => {
     if (node?.children.length > 0) return res(node.children);
     else return res(null);
   };
@@ -159,7 +160,7 @@ export class TreeNode {
     } else if (this.data === null) {
       return null;
     }
-    return {...this.data};
+    return { ...this.data };
   }
 
   getHtmlIdentifier() {

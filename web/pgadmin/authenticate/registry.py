@@ -22,14 +22,6 @@ def load_modules(cls, app=None):
     from . import kerberos as module
     submodules.append(module)
 
-    from . import ldap as module
-    submodules.append(module)
-
-    from . import mfa as module
-    submodules.append(module)
-
-    from . import oauth2 as module
-    submodules.append(module)
 
     from . import webserver as module
     submodules.append(module)

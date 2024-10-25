@@ -12,12 +12,6 @@ a webserver, this will provide the WSGI interface, otherwise, we're going
 to start a web server."""
 
 import sys
-if sys.version_info <= (3, 9):
-    import select
-
-if sys.version_info < (3, 8):
-    raise RuntimeError('This application must be run under Python 3.8 '
-                       'or later.')
 import builtins
 import os
 
@@ -27,23 +21,10 @@ if sys.path[0] != os.path.dirname(os.path.realpath(__file__)):
     sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 
 # Grab the SERVER_MODE if it's been set by the runtime
-if 'PGADMIN_SERVER_MODE' in os.environ:
-    if os.environ['PGADMIN_SERVER_MODE'] == 'OFF':
-        builtins.SERVER_MODE = False
-    else:
-        builtins.SERVER_MODE = True
-else:
-    builtins.SERVER_MODE = None
 
-if (3, 10) > sys.version_info > (3, 8, 99) and os.name == 'posix':
-    # Fix eventlet issue with Python 3.9.
-    # Ref: https://github.com/eventlet/eventlet/issues/670
-    # This was causing issue in psycopg3
-    from eventlet import hubs
-    hubs.use_hub("poll")
+builtins.SERVER_MODE = False
 
-    import selectors
-    selectors.DefaultSelector = selectors.PollSelector
+
 
 import config
 import setup

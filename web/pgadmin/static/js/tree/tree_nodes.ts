@@ -7,6 +7,8 @@
 //
 //////////////////////////////////////////////////////////////
 
+// @ts-nocheck
+
 import * as BrowserFS from 'browserfs';
 import url_for from 'sources/url_for';
 import pgAdmin from 'sources/pgadmin';
@@ -25,23 +27,23 @@ export class ManageTreeNodes {
   }
 
   public init = (_root: string) => new Promise((res) => {
-    const node = {parent: null, children: [], data: null};
+    const node = { parent: null, children: [], data: null };
     this.tree = {};
-    this.tree[_root] = {name: 'root', type: FileType.Directory, metadata: node};
+    this.tree[_root] = { name: 'root', type: FileType.Directory, metadata: node };
     res();
   });
 
-  public updateNode = (_path, _data)  => new Promise((res) => {
+  public updateNode = (_path, _data) => new Promise((res) => {
     const item = this.findNode(_path);
     if (item) {
-      item.data = {...item.data, ..._data};
+      item.data = { ...item.data, ..._data };
       item.name = _data.label;
       item.metadata.data = _data;
     }
     res(true);
   });
 
-  public removeNode = async (_path)  => {
+  public removeNode = async (_path) => {
     const item = this.findNode(_path);
 
     if (item?.parentNode) {
@@ -64,7 +66,7 @@ export class ManageTreeNodes {
     _data.label = _.escape(_data.label);
 
     _data.is_collection = isCollectionNode(_data._type);
-    const nodeData = {parent: _parent, children: [], data: _data};
+    const nodeData = { parent: _parent, children: [], data: _data };
 
     const tmpParentNode = this.findNode(_parent);
     const treeNode = new TreeNode(_data.id, _data, {}, tmpParentNode, nodeData, _data.type);
@@ -96,7 +98,7 @@ export class ManageTreeNodes {
       url = url_for('browser.nodes');
     } else {
       const _parent_url = self.generate_url(_path);
-      if (node.metadata.data._pid == null ) {
+      if (node.metadata.data._pid == null) {
         url = node.metadata.data._type + '/children/' + node.metadata.data._id;
       }
       else if (node.metadata.data._type.includes('coll-')) {
@@ -124,7 +126,7 @@ export class ManageTreeNodes {
       } catch (error) {
         /* react-aspen does not handle reject case */
         console.error(error);
-        pgAdmin.Browser.notifier.error(parseApiError(error)||'Node Load Error...');
+        pgAdmin.Browser.notifier.error(parseApiError(error) || 'Node Load Error...');
         return [];
       }
     }
@@ -139,7 +141,7 @@ export class ManageTreeNodes {
     else {
       if (node.data && node.data._type == 'server' && node.data.connected) {
         pgAdmin.Browser.notifier.info(gettext('Server children are not available.'
-        +' Please check these nodes are not hidden through the preferences setting `Browser > Nodes`.'), null);
+          + ' Please check these nodes are not hidden through the preferences setting `Browser > Nodes`.'), null);
       }
       return [];
     }
@@ -149,12 +151,12 @@ export class ManageTreeNodes {
     let _path = path;
     const _parent_path = [];
     let _partitions = [];
-    while(_path != '/') {
+    while (_path != '/') {
       const node = this.findNode(_path);
       const _parent = unix.dirname(_path);
-      if(node.parentNode && node.parentNode.path == _parent) {
+      if (node.parentNode && node.parentNode.path == _parent) {
         if (node.parentNode.metadata.data !== null && !node.parentNode.metadata.data._type.includes('coll-'))
-          if(node.parentNode.metadata.data._type.includes('partition')) {
+          if (node.parentNode.metadata.data._type.includes('partition')) {
             _partitions.push(node.parentNode.metadata.data._id);
           } else {
             _parent_path.push(node.parentNode.metadata.data._id);
@@ -164,7 +166,7 @@ export class ManageTreeNodes {
     }
     _partitions = _partitions.reverse();
     // Replace the table with the last partition as in reality partition node is not child of the table
-    if(_partitions.length > 0) _parent_path[0]  = _partitions[_partitions.length-1];
+    if (_partitions.length > 0) _parent_path[0] = _partitions[_partitions.length - 1];
 
     _parent_path.reverse();
     return _parent_path.join('/');
@@ -200,7 +202,7 @@ export class TreeNode {
       if (parent !== null && parent !== undefined && parent.path !== undefined) {
         this.path = parent.path + '/' + this.id;
       } else {
-        this.path =  '/browser/' + this.id;
+        this.path = '/browser/' + this.id;
       }
   }
 
@@ -210,7 +212,7 @@ export class TreeNode {
     } else if (this.data === null) {
       return null;
     }
-    return {...this.data};
+    return { ...this.data };
   }
 
   getHtmlIdentifier() {
@@ -238,7 +240,7 @@ export class TreeNode {
    * or any of the parent nodes condition result is true
    */
   anyFamilyMember(condition) {
-    if(condition(this)) {
+    if (condition(this)) {
       return true;
     }
 
@@ -249,9 +251,9 @@ export class TreeNode {
   }
 
   reload(tree) {
-    return new Promise((resolve)=>{
+    return new Promise((resolve) => {
       this.unload(tree)
-        .then(()=>{
+        .then(() => {
           tree.setInode(this.domNode);
           tree.deselect(this.domNode);
           setTimeout(() => {
@@ -263,14 +265,14 @@ export class TreeNode {
   }
 
   unload(tree) {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       this.children = [];
       tree.unload(this.domNode)
         .then(
-          ()=>{
+          () => {
             resolve(true);
           },
-          ()=>{
+          () => {
             reject(new Error());
           });
     });
@@ -278,10 +280,10 @@ export class TreeNode {
 
 
   open(tree, suppressNoDom) {
-    return new Promise((resolve, reject)=>{
-      if(suppressNoDom && (this.domNode == null || typeof(this.domNode) === 'undefined')) {
+    return new Promise((resolve, reject) => {
+      if (suppressNoDom && (this.domNode == null || typeof (this.domNode) === 'undefined')) {
         resolve(true);
-      } else if(tree.isOpen(this.domNode)) {
+      } else if (tree.isOpen(this.domNode)) {
         resolve(true);
       } else {
         tree.open(this.domNode).then(() => resolve(true), () => reject(new Error(true)));

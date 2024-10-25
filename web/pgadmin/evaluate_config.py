@@ -45,13 +45,6 @@ def validate_config_variable(key, value):
         return True
 
 
-# Load distribution-specific config overrides
-try:
-    import config_distro
-    config_distro_settings = get_variables_from_module('config_distro')
-    custom_config_settings.update(config_distro_settings)
-except ImportError:
-    pass
 
 # Load local config overrides
 try:

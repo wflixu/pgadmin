@@ -17,9 +17,11 @@ import { fileURLToPath } from 'url';
 import { setupMenu } from './menu.js';
 import contextMenu from 'electron-context-menu';
 
+console.warn('pgAdmin4 is running in development mode')
+
 const configStore = new Store({
   defaults: {
-    fixedPort: false,
+    fixedPort: true,
     portNo: 5050,
     connectionTimeout: 180,
     openDocsInBrowser: true,
@@ -87,6 +89,7 @@ function openConfigure() {
       preload: path.join(__dirname, 'other_preload.js'),
     },
   });
+  win.webContents.openDevTools();
   win.loadFile('./src/html/configure.html');
   win.once('ready-to-show', ()=>{
     win.show();
@@ -275,10 +278,11 @@ function launchPgAdminWindow() {
       preload: path.join(__dirname, 'pgadmin_preload.js'),
     },
   });
-
+ 
   splashWindow.close();
+  pgAdminMainScreen.webContents.openDevTools();
   pgAdminMainScreen.webContents.session.clearCache();
-
+   
   setupMenu(pgAdminMainScreen, {
     'view_logs': ()=>{
       const win = new BrowserWindow({
@@ -382,21 +386,24 @@ ipcMain.handle('openConfigure', openConfigure);
 app.whenReady().then(() => {
   splashWindow = new BrowserWindow({
     transparent: true,
-    width: 750,
-    height: 600,
+    width: 1200,
+    height: 900,
     frame: false,
     movable: true,
     focusable: true,
-    resizable: false,
+    resizable: true,
     show: false,
     icon: '../../assets/pgAdmin4.png',
   });
+  splashWindow.webContents.openDevTools();
 
   splashWindow.loadFile('./src/html/splash.html');
   splashWindow.center();
 
   splashWindow.on('show', function () {
+    configStore.set('fixedPort', true)
     let fixedPortCheck = configStore.get('fixedPort', false);
+
     if (fixedPortCheck) {
       serverPort = configStore.get('portNo');
       //Start the pgAdmin in Desktop mode.

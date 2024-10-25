@@ -125,6 +125,10 @@ module.exports = [{
       exclude: [/node_modules/, /vendor/],
       use: {
         loader: 'babel-loader',
+        options: {
+          presets: [['@babel/preset-env', {'modules': 'commonjs', 'useBuiltIns': 'usage', 'corejs': 3}], '@babel/preset-react',],
+          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread', '@babel/plugin-transform-runtime', ],
+        },
       },
     },{
       test: /\.m?js$/,
@@ -137,7 +141,7 @@ module.exports = [{
         loader: 'babel-loader',
         options: {
           presets: [['@babel/preset-env', {'modules': 'commonjs', 'useBuiltIns': 'usage', 'corejs': 3}], '@babel/preset-react', '@babel/preset-typescript'],
-          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread'],
+          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread', '@babel/plugin-transform-runtime', ],
         },
       },
     }, {
@@ -146,6 +150,8 @@ module.exports = [{
         loader: 'babel-loader',
         options: {
           presets: [['@babel/preset-env', {'modules': 'commonjs', 'useBuiltIns': 'usage', 'corejs': 3}]],
+          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread', '@babel/plugin-transform-runtime', ],
+
         },
       },
     }, {

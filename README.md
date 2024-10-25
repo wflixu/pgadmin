@@ -71,7 +71,7 @@ simple - adapt as required for your distribution:
    packages:
 
    ```bash
-   (venv) $ PATH=$PATH:/usr/local/pgsql/bin pip install -r $PGADMIN4_SRC/requirements.txt
+   (venv) $ PATH=$PATH:/Applications/Postgres.app/Contents/Versions/16/bin/ pip install -r ./requirements.txt
    ```
 
    If you are planning to run the regression tests, you also need to install

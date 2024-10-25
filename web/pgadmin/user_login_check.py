@@ -14,10 +14,9 @@ from flask_security import login_required
 
 
 def pga_login_required(func):
-    import pgadmin.authenticate.mfa.utils as mfa_utils
+   
 
     @wraps(func)
-    @mfa_utils.mfa_required
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
 
