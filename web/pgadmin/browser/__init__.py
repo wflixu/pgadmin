@@ -621,6 +621,7 @@ def browser_css():
 
 @blueprint.route("/nodes/", endpoint="nodes")
 @pga_login_required
+@pgCSRFProtect.exempt
 def get_nodes():
     """Build a list of treeview nodes from the child nodes."""
     nodes = []

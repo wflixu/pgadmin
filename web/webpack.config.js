@@ -125,10 +125,6 @@ module.exports = [{
       exclude: [/node_modules/, /vendor/],
       use: {
         loader: 'babel-loader',
-        options: {
-          presets: [['@babel/preset-env', {'modules': 'commonjs', 'useBuiltIns': 'usage', 'corejs': 3}], '@babel/preset-react',],
-          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread', '@babel/plugin-transform-runtime', ],
-        },
       },
     },{
       test: /\.m?js$/,
@@ -141,7 +137,7 @@ module.exports = [{
         loader: 'babel-loader',
         options: {
           presets: [['@babel/preset-env', {'modules': 'commonjs', 'useBuiltIns': 'usage', 'corejs': 3}], '@babel/preset-react', '@babel/preset-typescript'],
-          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread', '@babel/plugin-transform-runtime', ],
+          plugins: ['@babel/plugin-proposal-class-properties', '@babel/proposal-object-rest-spread'],
         },
       },
     }, {
@@ -446,16 +442,11 @@ module.exports = [{
   },
   // Define list of Plugins used in Production or development mode
   // Ref:https://webpack.js.org/concepts/plugins/#components/sidebar/sidebar.jsx
-  plugins: PRODUCTION ? [
+  plugins:  [
     extractStyle,
     providePlugin,
     sourceMapDevToolPlugin,
-    bundleAnalyzer,
-    copyFiles,
-  ]: [
-    extractStyle,
-    providePlugin,
-    sourceMapDevToolPlugin,
+    // bundleAnalyzer,
     copyFiles,
   ],
 }];

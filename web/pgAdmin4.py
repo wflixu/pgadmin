@@ -139,6 +139,8 @@ if 'PGADMIN_INT_KEY' in os.environ:
 else:
     app.PGADMIN_INT_KEY = ''
 
+app.PGADMIN_INT_KEY = '59ae8a11-9648-4013-8488-ebff08e33ab7'
+
 if not app.PGADMIN_RUNTIME:
     app.wsgi_app = ReverseProxied(app.wsgi_app)
 

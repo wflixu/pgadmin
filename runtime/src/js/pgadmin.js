@@ -138,7 +138,8 @@ function startDesktopMode() {
     return;
 
   let pingIntervalID;
-  let UUID = crypto.randomUUID();
+  // let UUID = crypto.randomUUID();
+  let UUID = '59ae8a11-9648-4013-8488-ebff08e33ab7';
   // Set the environment variables so that pgAdmin 4 server
   // starts listening on the appropriate port.
   process.env.PGADMIN_INT_PORT = serverPort;
@@ -178,26 +179,26 @@ function startDesktopMode() {
 
   // Spawn the process to start pgAdmin4 server.
   let spawnStartTime = (new Date).getTime();
-  pgadminServerProcess = spawn(pythonPath, ['-s', pgadminFile]);
-  pgadminServerProcess.on('error', function (err) {
-    // Log the error into the log file if process failed to launch
-    misc.writeServerLog('Failed to launch pgAdmin4. Error:');
-    misc.writeServerLog(err);
-    showErrorDialog(pingIntervalID);
-  });
+  // pgadminServerProcess = spawn(pythonPath, ['-s', pgadminFile]);
+  // pgadminServerProcess.on('error', function (err) {
+  //   // Log the error into the log file if process failed to launch
+  //   misc.writeServerLog('Failed to launch pgAdmin4. Error:');
+  //   misc.writeServerLog(err);
+  //   showErrorDialog(pingIntervalID);
+  // });
 
   let spawnEndTime = (new Date).getTime();
   misc.writeServerLog('Total spawn time to start the pgAdmin4 server: ' + (spawnEndTime - spawnStartTime) / 1000 + ' Sec');
 
-  pgadminServerProcess.stdout.setEncoding('utf8');
-  pgadminServerProcess.stdout.on('data', (chunk) => {
-    misc.writeServerLog(chunk);
-  });
+  // pgadminServerProcess.stdout.setEncoding('utf8');
+  // pgadminServerProcess.stdout.on('data', (chunk) => {
+  //   misc.writeServerLog(chunk);
+  // });
 
-  pgadminServerProcess.stderr.setEncoding('utf8');
-  pgadminServerProcess.stderr.on('data', (chunk) => {
-    misc.writeServerLog(chunk);
-  });
+  // pgadminServerProcess.stderr.setEncoding('utf8');
+  // pgadminServerProcess.stderr.on('data', (chunk) => {
+  //   misc.writeServerLog(chunk);
+  // });
 
   // This function is used to ping the pgAdmin4 server whether it
   // it is started or not.
@@ -262,6 +263,7 @@ function launchPgAdminWindow() {
   // Create and launch new window and open pgAdmin url
   misc.writeServerLog('Application Server URL: ' + startPageUrl);
   pgAdminMainScreen = new BrowserWindow({
+
     'id': 'pgadmin-main',
     'icon': '../../assets/pgAdmin4.png',
     'frame': true,
@@ -274,6 +276,8 @@ function launchPgAdminWindow() {
     'focus': true,
     'show': false,
     webPreferences: {
+      webSecurity: false,
+      allowRunningInsecureContent: true,
       nodeIntegrationInSubFrames: true,
       preload: path.join(__dirname, 'pgadmin_preload.js'),
     },
@@ -286,6 +290,9 @@ function launchPgAdminWindow() {
   setupMenu(pgAdminMainScreen, {
     'view_logs': ()=>{
       const win = new BrowserWindow({
+        webPreferences: {
+          webSecurity: false
+        },
         show: false,
         width: 800,
         height: 460,

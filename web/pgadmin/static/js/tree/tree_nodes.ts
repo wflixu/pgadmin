@@ -17,7 +17,7 @@ import { FileType } from 'react-aspen';
 import { findInTree } from './tree';
 import gettext from 'sources/gettext';
 
-import { unix } from 'path-fx';
+import { dirname } from 'path-fx';
 import getApiInstance, { parseApiError } from '../api_instance';
 
 export class ManageTreeNodes {
@@ -153,8 +153,8 @@ export class ManageTreeNodes {
     let _partitions = [];
     while (_path != '/') {
       const node = this.findNode(_path);
-      const _parent = unix.dirname(_path);
-      if (node.parentNode && node.parentNode.path == _parent) {
+      const _parent = dirname(_path);
+      if (node?.parentNode && node.parentNode.path == _parent) {
         if (node.parentNode.metadata.data !== null && !node.parentNode.metadata.data._type.includes('coll-'))
           if (node.parentNode.metadata.data._type.includes('partition')) {
             _partitions.push(node.parentNode.metadata.data._id);

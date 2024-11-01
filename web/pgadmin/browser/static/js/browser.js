@@ -263,8 +263,8 @@ define('pgadmin.browser', [
       obj.initialized = true;
 
       // Cache preferences
-      usePreferences.getState().cache();
-      setupPreferenceBroadcast();
+      // usePreferences.getState().cache();
+      // setupPreferenceBroadcast();
 
       setTimeout(function() {
         obj?.editor?.setValue('-- ' + select_object_msg);
@@ -292,8 +292,8 @@ define('pgadmin.browser', [
       obj.Events.on(
         'pgadmin:server:disconnect', stop_heartbeat.bind(obj)
       );
-
-      obj.check_corrupted_db_file();
+      // mini 
+      // obj.check_corrupted_db_file();
       obj.Events.on('pgadmin:browser:tree:add', obj.onAddTreeNode.bind(obj));
       obj.Events.on('pgadmin:browser:tree:update', obj.onUpdateTreeNode.bind(obj));
       obj.Events.on('pgadmin:browser:tree:refresh', obj.onRefreshTreeNodeReact.bind(obj));
@@ -307,7 +307,6 @@ define('pgadmin.browser', [
     },
     uiloaded: function() {
       this.set_master_password('');
-      this.check_version_update();
     },
     check_corrupted_db_file: function() {
       getApiInstance().get(
