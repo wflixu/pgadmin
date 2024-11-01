@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useEffect, useMemo } from 'react';
 
@@ -18,10 +11,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import PropTypes from 'prop-types';
 
-import { usePgAdmin } from 'sources/BrowserComponent';
-import gettext from 'sources/gettext';
-import { PgIconButton, PgButtonGroup } from 'sources/components/Buttons';
-import CustomPropTypes from 'sources/custom_prop_types';
+import { usePgAdmin } from '../BrowserComponent';
+import gettext from '../gettext';
+import { PgIconButton, PgButtonGroup } from '../components/Buttons';
+import CustomPropTypes from '../custom_prop_types';
 
 import { FieldControl } from './FieldControl';
 import { FormLoader } from './FormLoader';

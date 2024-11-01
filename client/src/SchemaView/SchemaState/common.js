@@ -1,21 +1,14 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import diffArray from 'diff-arrays-of-objects';
 import _ from 'lodash';
 
-import gettext from 'sources/gettext';
-import { memoizeFn } from 'sources/utils';
+import gettext from '../../gettext';
+import { memoizeFn } from '../../utils';
 import {
   minMaxValidator, numberValidator, integerValidator, emptyValidator,
   checkUniqueCol, isEmptyString
-} from 'sources/validators';
+} from '../../shared/validators';
 
 import BaseUISchema from '../base_schema.ui';
 import { isModeSupportedByField, isObjectEqual, isValueEqual } from '../common';

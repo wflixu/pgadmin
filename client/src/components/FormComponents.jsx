@@ -33,9 +33,9 @@ import SelectThemes from './SelectThemes';
 import { showFileManager } from '../helpers/showFileManager';
 import { withColorPicker } from '../helpers/withColorPicker';
 import { useWindowSize } from '../custom_hooks';
-import PgTreeView from '../PgTreeView';
-import Loader from 'sources/components/Loader';
-import { MY_STORAGE } from '../../../misc/file_manager/static/js/components/FileManagerConstants';
+import PgTreeView from './PgTreeView';
+import Loader from './Loader';
+import { MY_STORAGE } from '../misc/file_manager/FileManagerConstants';
 
 
 const Root = styled('div')(({theme}) => ({

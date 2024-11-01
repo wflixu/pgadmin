@@ -13,7 +13,7 @@ import ErrorBoundary from '../ErrorBoundary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ContextMenu from '../../components/ContextMenu';
 import { showRenameTab } from '../../Dialogs';
-import usePreferences from '../../../../preferences/static/js/store';
+import usePreferences from '../../store/store';
 import _ from 'lodash';
 
 function TabTitle({ id, closable, defaultInternal }) {

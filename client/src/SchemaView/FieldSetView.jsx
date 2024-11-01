@@ -1,17 +1,10 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import FieldSet from 'sources/components/FieldSet';
-import CustomPropTypes from 'sources/custom_prop_types';
+import FieldSet from '../components/FieldSet';
+import CustomPropTypes from '../shared/custom_prop_types';
 
 import { FieldControl } from './FieldControl';
 import { SchemaStateContext } from './SchemaState';

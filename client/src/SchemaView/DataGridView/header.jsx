@@ -1,23 +1,15 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
 import AddIcon from '@mui/icons-material/AddOutlined';
 
-import { SCHEMA_STATE_ACTIONS } from 'sources/SchemaView/SchemaState';
-import { PgIconButton } from 'sources/components/Buttons';
-import CustomPropTypes from 'sources/custom_prop_types';
-import gettext from 'sources/gettext';
-import { requestAnimationAndFocus } from 'sources/utils';
+import { PgIconButton } from '../../components/Buttons';
+import CustomPropTypes from '../../shared/custom_prop_types';
+import gettext from '../../gettext';
+import { requestAnimationAndFocus } from '../../utils';
 
-import { SchemaStateContext } from '../SchemaState';
+import { SchemaStateContext,SCHEMA_STATE_ACTIONS } from '../SchemaState';
 import { SearchBox, SEARCH_STATE_PATH } from './SearchBox';
 import { DataGridContext } from './context';
 

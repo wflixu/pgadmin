@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, {
   useCallback, useContext, useEffect, useMemo, useRef, useState
@@ -17,11 +10,11 @@ import PropTypes from 'prop-types';
 
 import {
   FormFooterMessage, MESSAGE_TYPE, FormNote
-} from 'sources/components/FormComponents';
-import TabPanel from 'sources/components/TabPanel';
-import { useOnScreen } from 'sources/custom_hooks';
-import CustomPropTypes from 'sources/custom_prop_types';
-import gettext from 'sources/gettext';
+} from '../components/FormComponents';
+import TabPanel from '../components/TabPanel';
+import { useOnScreen } from '../custom_hooks';
+import CustomPropTypes from '../shared/custom_prop_types';
+import gettext from '../gettext';
 
 import { FieldControl } from './FieldControl';
 import { SQLTab } from './SQLTab';

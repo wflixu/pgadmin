@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useContext, useMemo, useRef } from 'react';
 
@@ -13,7 +6,7 @@ import { flexRender } from '@tanstack/react-table';
 
 import {
   PgReactTableCell, PgReactTableRowContent, PgReactTableRowExpandContent,
-} from 'sources/components/PgReactTableStyled';
+} from '../../components/PgReactTableStyled';
 
 import { SchemaStateContext } from '../SchemaState';
 import { useFieldOptions } from '../hooks';

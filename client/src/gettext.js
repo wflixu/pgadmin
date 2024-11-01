@@ -11,7 +11,7 @@ const translations = {};
  *
  * @param {String} text
  */
-export function gettext(text) {
+export  default function gettext(text) {
 
   let rawTranslation = translations[text] ? translations[text] : text;
 

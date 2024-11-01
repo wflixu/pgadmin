@@ -1,25 +1,18 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useContext, useMemo, useState } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-import { evalFunc } from 'sources/utils';
+import { evalFunc } from '../../utils';
 
+import {listenDepChanges } from './utils'
 import { MappedCellControl } from '../MappedControl';
 import { SCHEMA_STATE_ACTIONS, SchemaStateContext } from '../SchemaState';
 import { flatternObject } from '../common';
 import {
   useFieldOptions, useFieldValue, useSchemaStateSubscriber
 } from '../hooks';
-import { listenDepChanges } from '../utils';
 
 import { DataGridContext, DataGridRowContext } from './context';
 

@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import _ from 'lodash';
@@ -18,12 +11,12 @@ import {
   FormInputText, FormInputToggle, FormNote, InputCheckbox, InputDateTimePicker,
   InputFileSelect, InputRadio, InputSQL,InputSelect, InputSwitch, InputText,
   InputTree, PlainString,
-} from 'sources/components/FormComponents';
-import { SelectRefresh } from 'sources/components/SelectRefresh';
-import Privilege from 'sources/components/Privilege';
-import { useIsMounted } from 'sources/custom_hooks';
-import CustomPropTypes from 'sources/custom_prop_types';
-import { evalFunc } from 'sources/utils';
+} from '../components/FormComponents';
+import { SelectRefresh } from '../components/SelectRefresh';
+import Privilege from '../components/Privilege';
+import { useIsMounted } from '../custom_hooks';
+import CustomPropTypes from '../shared/custom_prop_types';
+import { evalFunc } from '../utils';
 
 import { SchemaStateContext } from './SchemaState';
 import { isValueEqual } from './common';

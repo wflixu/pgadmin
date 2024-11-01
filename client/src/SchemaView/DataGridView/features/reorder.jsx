@@ -1,17 +1,10 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import DragIndicatorRoundedIcon from '@mui/icons-material/DragIndicatorRounded';
 
-import { SCHEMA_STATE_ACTIONS } from 'sources/SchemaView/SchemaState';
+import { SCHEMA_STATE_ACTIONS } from '../../SchemaState';
 
 import { booleanEvaluator, registerOptionEvaluator } from '../../options';
 

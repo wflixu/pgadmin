@@ -1,16 +1,9 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import { useEffect } from 'react';
 import _ from 'lodash';
 
-import { evalFunc } from 'sources/utils';
+import { evalFunc } from '../../utils';
 
 
 export const listenDepChanges = (

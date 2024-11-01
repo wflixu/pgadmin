@@ -1,15 +1,8 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import _ from 'lodash';
 
-import gettext from 'sources/gettext';
+import  gettext  from '../../gettext';
 
 import { SCHEMA_STATE_ACTIONS } from '../SchemaState';
 import { isModeSupportedByField } from '../common';
@@ -58,7 +51,7 @@ export const createFieldControls = ({
     let inlineGroup = null;
     const inlineGroupId = field['inlineGroup'];
 
-    if(field.type === 'group') {
+    if (field.type === 'group') {
 
       if (!field.id || (field.id in groups)) {
         throw new Error('Group-id must be unique within a schema.');
@@ -85,7 +78,7 @@ export const createFieldControls = ({
 
       if (!currentGroup) {
         const newGroup = createGroup(group, group, true);
-        currentGroup = newGroup; 
+        currentGroup = newGroup;
       }
 
       // Generate inline-view if necessary, or use existing one.
@@ -136,53 +129,53 @@ export const createFieldControls = ({
     };
 
     switch (field.type) {
-    case 'nested-tab':
-      // We don't support nested-tab in 'properties' mode.
-      if (isPropertyMode) return;
+      case 'nested-tab':
+        // We don't support nested-tab in 'properties' mode.
+        if (isPropertyMode) return;
 
-      control = View('FormView');
-      controlProps['isNested'] = true;
-      break;
-    case 'nested-fieldset':
-      control = View('FieldSetView');
-      controlProps['controlClassName'] =
+        control = View('FormView');
+        controlProps['isNested'] = true;
+        break;
+      case 'nested-fieldset':
+        control = View('FieldSetView');
+        controlProps['controlClassName'] =
           isPropertyMode ? 'Properties-controlRow' : 'FormView-controlRow';
-      break;
-    case 'collection':
-      control = View('DataGridView');
-      controlProps['containerClassName'] =
+        break;
+      case 'collection':
+        control = View('DataGridView');
+        controlProps['containerClassName'] =
           isPropertyMode ? 'Properties-controlRow' : 'FormView-controlRow';
-      break;
-    default:
-      {
-        control = (
-          hasView(field.type) ? View(field.type) : (
-            field.id ? MappedFormControl : StaticMappedFormControl
-          )
-        );
+        break;
+      default:
+        {
+          control = (
+            hasView(field.type) ? View(field.type) : (
+              field.id ? MappedFormControl : StaticMappedFormControl
+            )
+          );
 
-        if (inlineGroup) {
-          controlProps['withContainer'] = false;
-          controlProps['controlGridBasis'] = 3;
+          if (inlineGroup) {
+            controlProps['withContainer'] = false;
+            controlProps['controlGridBasis'] = 3;
+          }
+
+          controlProps['className'] = field.isFullTab ? '' : (
+            isPropertyMode ? 'Properties-controlRow' : 'FormView-controlRow'
+          );
+
+          if (field.id) {
+            controlProps['id'] = field.id;
+            controlProps['onChange'] = (changeValue) => {
+              // Get the changes on dependent fields as well.
+              dataDispatch?.({
+                type: SCHEMA_STATE_ACTIONS.SET_VALUE,
+                path: controlProps.accessPath,
+                value: changeValue,
+              });
+            };
+          }
         }
-
-        controlProps['className'] = field.isFullTab ? '' : (
-          isPropertyMode ? 'Properties-controlRow' : 'FormView-controlRow'
-        );
-
-        if (field.id) {
-          controlProps['id'] = field.id;
-          controlProps['onChange'] = (changeValue) => {
-            // Get the changes on dependent fields as well.
-            dataDispatch?.({
-              type: SCHEMA_STATE_ACTIONS.SET_VALUE,
-              path: controlProps.accessPath,
-              value: changeValue,
-            });
-          };
-        }
-      }
-      break;
+        break;
     }
 
     // Use custom control over the standard one.
@@ -196,7 +189,7 @@ export const createFieldControls = ({
     if (_.isEqual(accessPath.concat(field.id), schemaState.errors?.name))
       currentGroup.hasError = true;
 
-    (inlineGroup || currentGroup).controls.push({control, controlProps});
+    (inlineGroup || currentGroup).controls.push({ control, controlProps });
   });
 
   return groups.filter(

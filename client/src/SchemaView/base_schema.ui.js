@@ -1,15 +1,8 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import _ from 'lodash';
 
-import { memoizeFn } from 'sources/utils';
+import { memoizeFn } from '../utils';
 
 /* This is the base schema class for SchemaView.
  * A UI schema must inherit this to use SchemaView for UI.

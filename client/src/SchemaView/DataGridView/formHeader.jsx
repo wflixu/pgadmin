@@ -1,11 +1,3 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
 
 import React, {
   useCallback, useContext, useEffect, useRef, useState
@@ -14,11 +6,11 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 
-import { SCHEMA_STATE_ACTIONS } from 'sources/SchemaView/SchemaState';
-import { DefaultButton } from 'sources/components/Buttons';
-import CustomPropTypes from 'sources/custom_prop_types';
-import gettext from 'sources/gettext';
-import { requestAnimationAndFocus } from 'sources/utils';
+import { SCHEMA_STATE_ACTIONS } from '../SchemaState';
+import { DefaultButton } from '../../components/Buttons';
+import CustomPropTypes from '../../shared/custom_prop_types';
+import gettext from '../../gettext';
+import { requestAnimationAndFocus } from '../../utils';
 
 import { SchemaStateContext } from '../SchemaState';
 import { booleanEvaluator, registerOptionEvaluator } from '../options';

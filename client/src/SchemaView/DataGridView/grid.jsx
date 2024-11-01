@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import React, {
   useContext, useEffect, useMemo, useRef, useState,
@@ -24,12 +17,12 @@ import PropTypes from 'prop-types';
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 
-import { usePgAdmin } from 'sources/BrowserComponent';
+import { usePgAdmin } from '../../BrowserComponent';
 import {
   PgReactTable, PgReactTableBody, PgReactTableHeader,
   PgReactTableRow, 
-} from 'sources/components/PgReactTableStyled';
-import CustomPropTypes from 'sources/custom_prop_types';
+} from '../../components/PgReactTableStyled';
+import CustomPropTypes from '../../shared/custom_prop_types';
 
 import { StyleDataGridBox } from '../StyledComponents';
 import { SchemaStateContext } from '../SchemaState';
