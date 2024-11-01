@@ -1,0 +1,39 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rspack build",
+    "check": "biome check --write",
+    "dev": "cross-env NODE_ENV=development rspack serve",
+    "format": "biome format --write"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.5",
+    "@mui/x-date-pickers": "^7.22.0",
+    "@szhsin/react-menu": "^4.2.2",
+    "@tanstack/react-table": "^8.20.5",
+    "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "rc-dock": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dom": "^18.2.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.3",
+    "@rspack/cli": "^1.0.14",
+    "@rspack/core": "^1.0.14",
+    "@rspack/plugin-react-refresh": "1.0.0",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "cross-env": "^7.0.3",
+    "prop-types": "^15.7.2",
+    "react-refresh": "^0.14.0"
+  }
+}
