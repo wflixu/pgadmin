@@ -14,7 +14,7 @@ import CustomPropTypes from '../custom_prop_types';
 import gettext from '../gettext';
 import _ from 'lodash';
 import { useModal } from './ModalProvider';
-import { parseApiError } from '../api_instance';
+import { parseApiError } from '../shared/api_instance';
 
 
 const Root = styled('div')(({theme}) => ({

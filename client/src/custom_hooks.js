@@ -4,6 +4,8 @@ import moment from 'moment';
 import { isMac } from './keyboard_shortcuts';
 import { getBrowser } from './utils';
 
+import _ from 'lodash';
+
 /* React hook for setInterval */
 export function useInterval(callback, delay) {
   const savedCallback = useRef();

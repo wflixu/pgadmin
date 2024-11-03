@@ -1,15 +1,14 @@
 import React, {useEffect, useMemo, useState } from 'react';
-import AppMenuBar from './AppMenuBar';
 import ObjectBreadcrumbs from './components/ObjectBreadcrumbs';
 import Layout, { LayoutDocker, getDefaultGroup } from './helpers/Layout';
 import gettext from './gettext';
-import ObjectExplorer from './tree/ObjectExplorer';
+// import ObjectExplorer from './tree/ObjectExplorer';
 import Properties from './misc/properties/Properties';
 import SQL from './misc/sql/SQL';
 import Statistics from './misc/statistics/Statistics';
 import { BROWSER_PANELS } from './shared/constants';
-import Dependencies from './misc/Dependencies';
-import Dependents from './misc/Dependents';
+// import Dependencies from './misc/Dependencies';
+// import Dependents from './misc/Dependents';
 // import UtilityView from './UtilityView';
 import ModalProvider from './helpers/ModalProvider';
 import { NotifierProvider } from './helpers/Notifier';
@@ -20,7 +19,7 @@ import MainMoreToolbar from './helpers/MainMoreToolbar';
 import usePreferences from './store/store';
 import { getBrowser } from './utils';
 import PropTypes from 'prop-types';
-import Processes from './misc/bgprocess/Processes';
+// import Processes from './misc/bgprocess/Processes';
 import { useBeforeUnload } from './custom_hooks';
 import pgWindow from './window';
 
@@ -37,29 +36,29 @@ const mainPanelGroup  = {
 };
 
 export const processesPanelData = {
-  id: BROWSER_PANELS.PROCESSES, title: gettext('Processes'), content: <Processes />, closable: true, group: 'playground'
+  // id: BROWSER_PANELS.PROCESSES, title: gettext('Processes'), content: <Processes />, closable: true, group: 'playground'
 };
 
 export const defaultTabsData = [
   // {
   //   id: BROWSER_PANELS.DASHBOARD, title: gettext('Dashboard'), content: <Dashboard />, closable: true, group: 'playground'
   // },
-  {
-    id: BROWSER_PANELS.PROPERTIES, title: gettext('Properties'), content: <Properties />, closable: true, group: 'playground'
-  },
-  {
-    id: BROWSER_PANELS.SQL, title: gettext('SQL'), content: <SQL />, closable: true, group: 'playground'
-  },
-  {
-    id: BROWSER_PANELS.STATISTICS, title: gettext('Statistics'), content: <Statistics />, closable: true, group: 'playground'
-  },
-  {
-    id: BROWSER_PANELS.DEPENDENCIES, title: gettext('Dependencies'), content: <Dependencies />, closable: true, group: 'playground'
-  },
-  {
-    id: BROWSER_PANELS.DEPENDENTS, title: gettext('Dependents'), content: <Dependents />, closable: true, group: 'playground'
-  },
-  processesPanelData,
+  // {
+  //   id: BROWSER_PANELS.PROPERTIES, title: gettext('Properties'), content: <Properties />, closable: true, group: 'playground'
+  // },
+  // {
+  //   id: BROWSER_PANELS.SQL, title: gettext('SQL'), content: <SQL />, closable: true, group: 'playground'
+  // },
+  // {
+  //   id: BROWSER_PANELS.STATISTICS, title: gettext('Statistics'), content: <Statistics />, closable: true, group: 'playground'
+  // },
+  // {
+  //   id: BROWSER_PANELS.DEPENDENCIES, title: gettext('Dependencies'), content: <Dependencies />, closable: true, group: 'playground'
+  // },
+  // {
+  //   id: BROWSER_PANELS.DEPENDENTS, title: gettext('Dependents'), content: <Dependents />, closable: true, group: 'playground'
+  // },
+  // processesPanelData,
 ];
 
 
@@ -74,10 +73,10 @@ export default function BrowserComponent({pgAdmin}) {
             {
               size: 20,
               tabs: [
-                LayoutDocker.getPanel({
-                  id: BROWSER_PANELS.OBJECT_EXPLORER, title: gettext('Object Explorer'),
-                  content: <ObjectExplorer />, group: 'object-explorer'
-                }),
+                // LayoutDocker.getPanel({
+                //   id: BROWSER_PANELS.OBJECT_EXPLORER, title: gettext('Object Explorer'),
+                //   content: <ObjectExplorer />, group: 'object-explorer'
+                // }),
               ],
             },
             {
@@ -117,7 +116,7 @@ export default function BrowserComponent({pgAdmin}) {
   }, [uiReady]);
 
   if(isLoading) {
-    return <></>;
+    return <>loading</>;
   }
   if(failed) {
     return <>Failed to load preferences</>;
@@ -127,8 +126,9 @@ export default function BrowserComponent({pgAdmin}) {
     <PgAdminContext.Provider value={pgAdmin}>
       <ModalProvider>
         <NotifierProvider pgAdmin={pgAdmin} pgWindow={pgWindow} onReady={()=>setUiReady(true)}/>
-        {browser != 'Electron' && <AppMenuBar />}
-        <div style={{height: (browser != 'Electron' ? 'calc(100% - 30px)' : '100%')}}>
+        
+        <div style={{height: '100%'}}>
+          <h1>Browser Component</h1>
           <Layout
             getLayoutInstance={(obj)=>{
               pgAdmin.Browser.docker = obj;

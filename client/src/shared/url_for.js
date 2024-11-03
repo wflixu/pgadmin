@@ -3021,3 +3021,5 @@ export  function url_for (endpoint, substitutions) {
 
   return interpolated;
 };
+
+export default url_for;

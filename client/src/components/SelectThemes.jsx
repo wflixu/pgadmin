@@ -7,6 +7,7 @@ import {InputSelect } from './FormComponents';
 import PropTypes from 'prop-types';
 import CustomPropTypes from '../custom_prop_types';
 import HTMLReactParse from 'html-react-parser';
+import _ from 'lodash';
 
 
 export default function SelectThemes({onChange, helpMessage, ...props}) {

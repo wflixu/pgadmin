@@ -1,23 +1,15 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
 
 import _ from 'lodash';
 import { styled } from '@mui/material/styles';
 import React, { useEffect } from 'react';
-import PgTable from 'sources/components/PgTable';
-import gettext from 'sources/gettext';
+import PgTable from '../components/PgTable';
+import gettext from '../gettext';
 import PropTypes from 'prop-types';
-import getApiInstance from 'sources/api_instance';
-import { getURL } from '../../../static/utils/utils';
-import Loader from 'sources/components/Loader';
-import EmptyPanelMessage from '../../../../static/js/components/EmptyPanelMessage';
-import { parseApiError } from '../../../../static/js/api_instance';
+import getApiInstance from '../shared/api_instance';
+import { getURL } from './utils/utils';
+import Loader from '../components/Loader';
+import EmptyPanelMessage from '../components/EmptyPanelMessage';
+import { parseApiError } from '../shared/api_instance';
 import withStandardTabInfo from '../../../../static/js/helpers/withStandardTabInfo';
 import { BROWSER_PANELS } from '../../../../browser/static/js/constants';
 import { usePgAdmin } from '../../../../static/js/BrowserComponent';

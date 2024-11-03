@@ -11,6 +11,11 @@ import usePreferences from '../../../store/store';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
+
+import _ from 'lodash';
+
+
+
 // Codemirror packages
 import {
   lineNumbers,

@@ -1,15 +1,8 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { DefaultButton, PgButtonGroup, PgIconButton, PrimaryButton } from '../../../../../static/js/components/Buttons';
+import { DefaultButton, PgButtonGroup, PgIconButton, PrimaryButton } from '../../../components/Buttons';
 import CloseIcon from '@mui/icons-material/CloseRounded';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -21,19 +14,19 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import SyncRoundedIcon from '@mui/icons-material/SyncRounded';
 import CreateNewFolderRoundedIcon from '@mui/icons-material/CreateNewFolderRounded';
 import GetAppRoundedIcon from '@mui/icons-material/GetAppRounded';
-import gettext from 'sources/gettext';
-import { FormFooterMessage, InputSelectNonSearch, InputText, MESSAGE_TYPE } from '../../../../../static/js/components/FormComponents';
+import gettext from '../../../gettext';
+import { FormFooterMessage, InputSelectNonSearch, InputText, MESSAGE_TYPE } from '../../../components/FormComponents';
 import ListView from './ListView';
-import { PgMenu, PgMenuDivider, PgMenuItem, usePgMenuGroup } from '../../../../../static/js/components/Menu';
-import getApiInstance, { parseApiError } from '../../../../../static/js/api_instance';
-import Loader from 'sources/components/Loader';
-import url_for from 'sources/url_for';
+import { PgMenu, PgMenuDivider, PgMenuItem, usePgMenuGroup } from '../../../components/Menu';
+import getApiInstance, { parseApiError } from '../../../shared/api_instance';
+import Loader from '../../../components/Loader';
+import url_for from '../../../shared/url_for';
 import Uploader from './Uploader';
 import GridView from './GridView';
 import convert from 'convert-units';
 import PropTypes from 'prop-types';
-import { downloadBlob } from '../../../../../static/js/utils';
-import ErrorBoundary from '../../../../../static/js/helpers/ErrorBoundary';
+import { downloadBlob } from '../../../utils';
+import ErrorBoundary from '../../../helpers/ErrorBoundary';
 import { MY_STORAGE } from './FileManagerConstants';
 import _ from 'lodash';
 

@@ -11,6 +11,7 @@ import { generateNodeUrl } from '../../browser/static/js/node_ajax';
 import usePreferences from './store/store';
 import gettext from 'sources/gettext';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 export default function UtilityView() {
   const pgAdmin = usePgAdmin();

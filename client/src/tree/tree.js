@@ -1,14 +1,7 @@
-//////////////////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////////////////
+
 
 import _ from 'lodash';
-import pgAdmin from 'sources/pgadmin';
+import pgAdmin from '../pgadmin';
 
 import { FileType } from 'react-aspen';
 import { TreeNode } from './tree_nodes';

@@ -1,5 +1,6 @@
 
 import { evalFunc } from '../../utils';
+import { isUndefined } from 'lodash'
 import {
   booleanEvaluator,
   canAddOrDelete,
@@ -9,7 +10,7 @@ import {
 } from './common';
 import {
   evaluateFieldOptions,
-  evaluateFieldsOption, 
+  evaluateFieldsOption,
   registerOptionEvaluator,
   schemaOptionsEvalulator,
 } from './registry';
@@ -19,7 +20,7 @@ export {
   booleanEvaluator,
   canAddOrDelete,
   evaluateFieldOptions,
-  evaluateFieldsOption, 
+  evaluateFieldsOption,
   evalIfNotDisabled,
   registerOptionEvaluator,
   schemaOptionsEvalulator,
@@ -36,25 +37,25 @@ registerOptionEvaluator('disabled');
 registerOptionEvaluator(
   VISIBLE,
   // Evaluator
-  ({schema, field, value, viewHelperProps}) => (
+  ({ schema, field, value, viewHelperProps }) => (
     (
       !field.mode || field.mode.indexOf(viewHelperProps.mode) > -1
     ) && (
-    // serverInfo not found
-      _.isUndefined(viewHelperProps.serverInfo) ||
-        // serverInfo found and it's within range
-        ((
-          _.isUndefined(field.server_type) ? true :
-            (viewHelperProps.serverInfo.type in field.server_type)
-        ) && (
-          _.isUndefined(field.min_version) ? true :
+      // serverInfo not found
+      isUndefined(viewHelperProps.serverInfo) ||
+      // serverInfo found and it's within range
+      ((
+        isUndefined(field.server_type) ? true :
+          (viewHelperProps.serverInfo.type in field.server_type)
+      ) && (
+          isUndefined(field.min_version) ? true :
             (viewHelperProps.serverInfo.version >= field.min_version)
         ) && (
-          _.isUndefined(field.max_version) ? true :
+          isUndefined(field.max_version) ? true :
             (viewHelperProps.serverInfo.version <= field.max_version)
         ))
     ) && (
-      _.isUndefined(field[VISIBLE]) ?  true :
+      isUndefined(field[VISIBLE]) ? true :
         Boolean(evalFunc(schema, field[VISIBLE], value))
     )),
 );
@@ -62,13 +63,13 @@ registerOptionEvaluator(
 registerOptionEvaluator(
   'readonly',
   // Evaluator
-  ({viewHelperProps, ...args}) => (
+  ({ viewHelperProps, ...args }) => (
     viewHelperProps.inCatalog ||
     viewHelperProps.mode === 'properties' ||
-    booleanEvaluator({viewHelperProps, ...args })
+    booleanEvaluator({ viewHelperProps, ...args })
   ),
   // Default value
-  false 
+  false
 );
 
 
@@ -91,11 +92,11 @@ registerOptionEvaluator(
 registerOptionEvaluator(
   'canEdit',
   // Evaluator
-  ({viewHelperProps, options, ...args}) => (
+  ({ viewHelperProps, options, ...args }) => (
     !viewHelperProps.inCatalog &&
     viewHelperProps.mode !== 'properties' &&
     !options.disabled &&
-    booleanEvaluator({viewHelperProps, options, ...args })
+    booleanEvaluator({ viewHelperProps, options, ...args })
   ),
   // Default value
   false,
@@ -105,9 +106,9 @@ registerOptionEvaluator(
 registerOptionEvaluator(
   'canAddRow',
   // Evaluator
-  ({options, ...args}) => (
+  ({ options, ...args }) => (
     options.canAdd &&
-    booleanEvaluator({options, ...args })
+    booleanEvaluator({ options, ...args })
   ),
   // Default value
   true,
@@ -157,10 +158,10 @@ registerOptionEvaluator(
 registerOptionEvaluator(
   'editable',
   // Evaluator
-  ({viewHelperProps, ...args}) => (
+  ({ viewHelperProps, ...args }) => (
     !viewHelperProps.inCatalog &&
     viewHelperProps.mode !== 'properties' &&
-    booleanEvaluator({viewHelperProps, ...args })
+    booleanEvaluator({ viewHelperProps, ...args })
   ),
   // Default value
   true,

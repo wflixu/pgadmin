@@ -45,7 +45,7 @@ if (!Math.ceil10) {
     };
 }
 
-export const pgadmin = {
+ const pgadmin = {
 
     natural_sort: function (a, b, options) {
         options = options || {};
@@ -105,3 +105,6 @@ export const pgadmin = {
             return 1;
     }
 }
+
+
+export default pgadmin;

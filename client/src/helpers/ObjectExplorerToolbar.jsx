@@ -7,7 +7,7 @@ import { PgButtonGroup, PgIconButton } from '../components/Buttons';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import CustomPropTypes from '../custom_prop_types';
-import usePreferences from '../../../preferences/static/js/store';
+import usePreferences from '../store/store';
 
 
 function ToolbarButton({menuItem, ...props}) {

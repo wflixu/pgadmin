@@ -1,7 +1,8 @@
 import {create} from 'zustand';
-import getApiInstance from '../../../static/js/api_instance';
-import url_for from 'sources/url_for';
-import pgAdmin from 'sources/pgadmin';
+import getApiInstance from '../shared/api_instance';
+import url_for from '../shared/url_for';
+import pgAdmin from '../pgadmin';
+import _ from 'lodash';
 
 const usePreferences = create((set, get)=>({
   data: {},

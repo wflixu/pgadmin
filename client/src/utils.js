@@ -1,11 +1,11 @@
 
 import _ from 'lodash';
-import gettext from 'sources/gettext';
-import { hasTrojanSource } from 'anti-trojan-source';
+import gettext from './gettext';
+
 import convert from 'convert-units';
-import getApiInstance from './api_instance';
-import usePreferences from '../../preferences/static/js/store';
-import pgAdmin from 'sources/pgadmin';
+import getApiInstance from './shared/api_instance';
+import usePreferences from './store/store';
+import pgAdmin from './pgadmin';
 import { isMac } from './keyboard_shortcuts';
 
 export function parseShortcutValue(obj) {
@@ -397,13 +397,13 @@ export function getBrowser() {
 
 export function checkTrojanSource(content, isPasteEvent) {
   // Call the hasTrojanSource function of 'anti-trojan-source' package
-  if (hasTrojanSource({ sourceText: content})) {
-    let msg = gettext('The file opened contains bidirectional Unicode characters which could be interpreted differently than what is displayed. If this is unexpected it is recommended that you review the text in an application that can display hidden Unicode characters before proceeding.');
-    if (isPasteEvent) {
-      msg = gettext('The pasted text contains bidirectional Unicode characters which could be interpreted differently than what is displayed. If this is unexpected it is recommended that you review the text in an application that can display hidden Unicode characters before proceeding.');
-    }
-    pgAdmin.Browser.notifier.alert(gettext('Trojan Source Warning'), msg);
-  }
+  // if (hasTrojanSource({ sourceText: content})) {
+  //   let msg = gettext('The file opened contains bidirectional Unicode characters which could be interpreted differently than what is displayed. If this is unexpected it is recommended that you review the text in an application that can display hidden Unicode characters before proceeding.');
+  //   if (isPasteEvent) {
+  //     msg = gettext('The pasted text contains bidirectional Unicode characters which could be interpreted differently than what is displayed. If this is unexpected it is recommended that you review the text in an application that can display hidden Unicode characters before proceeding.');
+  //   }
+  //   pgAdmin.Browser.notifier.alert(gettext('Trojan Source Warning'), msg);
+  // }
 }
 
 export function downloadBlob(blob, fileName) {

@@ -2,13 +2,13 @@
 
 import { Box, Dialog, DialogContent, DialogTitle, Paper } from '@mui/material';
 import React, { useState, useMemo } from 'react';
-import { getEpoch } from 'sources/utils';
+import { getEpoch } from '../utils';
 import { DefaultButton, PgIconButton, PrimaryButton } from '../components/Buttons';
 import Draggable from 'react-draggable';
 import CloseIcon from '@mui/icons-material/CloseRounded';
 import CustomPropTypes from '../custom_prop_types';
 import PropTypes from 'prop-types';
-import gettext from 'sources/gettext';
+import gettext from '../gettext';
 import HTMLReactParser from 'html-react-parser';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import { Rnd } from 'react-rnd';

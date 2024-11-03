@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import _ from 'lodash';
 import { useEffect } from 'react';
@@ -25,7 +18,7 @@ export const useFieldSchema = (
       return subscriberManager.current?.add(schemaState, accessPath, 'options');
 
     // There are no dependencies.
-    if (!_.isArray(field?.deps)) return;
+    if (!Array.isArray(field?.deps)) return;
 
     // Subscribe to all the dependents.
     const unsubscribers = field.deps.map((dep) => (

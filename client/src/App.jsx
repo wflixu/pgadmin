@@ -1,18 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Theme from './Theme/index';
 import BrowserComponent from './BrowserComponent';
+import pgAdmin from './pgadmin'
 
 function App() {
-	const [count, setCount] = useState(0);
-
-	return (
-	<Theme>
-		<BrowserComponent pgAdmin={pgAdmin} />
-	  </Theme>
-	);
+    return (
+        <Theme>
+            <BrowserComponent pgAdmin={pgAdmin} />
+        </Theme>
+    );
 }
 
 export default App;

@@ -1,12 +1,12 @@
 import { styled } from '@mui/material/styles';
 import React, { useRef, useEffect, useCallback } from 'react';
-import PgReactDataGrid from '../../../../../static/js/components/PgReactDataGrid';
+import PgReactDataGrid from '../../../components/PgReactDataGrid';
 import FolderIcon from '@mui/icons-material/Folder';
 import StorageRoundedIcon from '@mui/icons-material/StorageRounded';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import PropTypes from 'prop-types';
-import gettext from 'sources/gettext';
+import gettext from '../../../gettext';
 
 
 const StyledPgReactDataGrid = styled(PgReactDataGrid)(({theme}) => ({

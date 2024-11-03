@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
@@ -14,7 +7,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import StorageRoundedIcon from '@mui/icons-material/StorageRounded';
 import PropTypes from 'prop-types';
-import gettext from 'sources/gettext';
+import gettext from '../../../gettext';
 
 const StyledBox = styled(Box)(({theme}) => ({
   '& .GridView-grid': {

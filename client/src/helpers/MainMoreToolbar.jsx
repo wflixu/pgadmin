@@ -4,7 +4,7 @@ import { LAYOUT_EVENTS, LayoutDockerContext } from './Layout';
 import { PgIconButton } from '../components/Buttons';
 import gettext from '../gettext';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { BROWSER_PANELS } from '../../../browser/static/js/constants';
+import { BROWSER_PANELS } from '../shared/constants';
 import { defaultTabsData } from '../BrowserComponent';
 
 export default function MainMoreToolbar() {

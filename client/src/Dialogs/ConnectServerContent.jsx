@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import { FormFooterMessage, InputCheckbox, InputText, MESSAGE_TYPE } from '../components/FormComponents';
 import { ModalContent, ModalFooter } from '../components/ModalContent';
 
+import _ from 'lodash';
+
 export default function ConnectServerContent({closeModal, data, onOK, setHeight}) {
 
   const containerRef = useRef();
