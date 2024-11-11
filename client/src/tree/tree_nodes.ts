@@ -1,24 +1,16 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
 
 // @ts-nocheck
 
 import * as BrowserFS from 'browserfs';
-import url_for from 'sources/url_for';
-import pgAdmin from 'sources/pgadmin';
+import url_for from '../shared/url_for';
+import pgAdmin from '../pgadmin';
 import _ from 'lodash';
 import { FileType } from 'react-aspen';
 import { findInTree } from './tree';
-import gettext from 'sources/gettext';
+import gettext from '../gettext';
 
 import { dirname } from 'path-fx';
-import getApiInstance, { parseApiError } from '../api_instance';
+import getApiInstance, { parseApiError } from '../shared/api_instance';
 
 export class ManageTreeNodes {
   constructor() {

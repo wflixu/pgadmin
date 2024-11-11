@@ -4,10 +4,14 @@ import pgAdmin from '../pgadmin';
 import gettext from '../gettext';
 import axios from 'axios';
 
+export const API_Base_URL = 'http://127.0.0.1:5050';
+export const PGADMIN_INT_KEY = '59ae8a11-9648-4013-8488-ebff08e33ab7'
+
 /* Get the axios instance to call back end APIs.
 Do not import axios directly, instead use this */
 export default function getApiInstance(headers={}) {
   return axios.create({
+    
     headers: {
       'Content-type': 'application/json',
       [pgAdmin.csrf_token_header]: pgAdmin.csrf_token,
@@ -15,6 +19,8 @@ export default function getApiInstance(headers={}) {
     }
   });
 }
+
+
 
 export function parseApiError(error, withData=false) {
   if (error.response) {

@@ -1,14 +1,7 @@
-//////////////////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////////////////
 
-import gettext from 'sources/gettext';
-import pgAdmin from 'sources/pgadmin';
+
+import gettext from '../gettext';
+import pgAdmin from '../pgadmin';
 
 export function retrieveAncestorOfTypeServer(pgBrowser, item, errorAlertTitle) {
   let serverInformation = null;

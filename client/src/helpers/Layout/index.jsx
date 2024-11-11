@@ -457,7 +457,7 @@ export default function Layout({ groups, noContextGroups, getLayoutInstance, lay
   return (
     <LayoutDockerContext.Provider value={layoutDockerObj}>
       {useMemo(() => (<DockLayout
-        style={{
+        style={{  
           height: '100%',
         }}
         ref={(obj) => {

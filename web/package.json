@@ -74,6 +74,7 @@
     "@lezer/highlight": "^1.2.1",
     "@mui/icons-material": "^5.16.6",
     "@mui/lab": "^5.0.0-alpha.165",
+    "today-tree": "file:/Users/lixu/code/today-tree",
     "@mui/material": "^5.15.14",
     "@mui/x-date-pickers": "^7.7.1",
     "@projectstorm/geometry": "^7.0.3",

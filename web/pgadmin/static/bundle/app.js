@@ -14,7 +14,8 @@ import MainMenuFactory from '../../browser/static/js/MainMenuFactory';
 import Theme from '../js/Theme';
 
 define('app', [
-  'sources/pgadmin', 'bundled_browser',
+  'sources/pgadmin', 
+  'bundled_browser',
 ], function(pgAdmin) {
   let initializeModules = function(obj) {
     for (let key in obj) {

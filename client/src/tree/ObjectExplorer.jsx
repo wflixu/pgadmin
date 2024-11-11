@@ -6,7 +6,7 @@ import { Directory } from 'react-aspen';
 import { ManageTreeNodes } from './tree_nodes';
 import { FileTreeX, TreeModelX } from '../components/PgTree';
 import ContextMenu from '../components/ContextMenu';
-import { generateNodeUrl } from '../../../browser/static/js/node_ajax';
+import { generateNodeUrl } from '../browser/node_ajax';
 import { copyToClipboard } from '../clipboard';
 import { usePgAdmin } from '../BrowserComponent';
 

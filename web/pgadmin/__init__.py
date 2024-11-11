@@ -16,6 +16,7 @@ import re
 import ipaddress
 import traceback
 import shutil
+from flask_cors import CORS
 
 from types import MethodType
 from collections import defaultdict
@@ -472,8 +473,11 @@ def create_app(app_name=None):
     else:
         run_migration_for_sqlite()
 
-    Mail(app)
+    # Cors
+    CORS(app) 
 
+    Mail(app)
+    
     # Don't bother paths when running in cli mode
     if not cli_mode:
         from pgadmin.utils import paths

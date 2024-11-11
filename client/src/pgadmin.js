@@ -1,4 +1,5 @@
 
+import getApiInstance, { API_Base_URL, PGADMIN_INT_KEY } from './shared/api_instance';
 /**
  * Decimal adjustment of a number.
  *
@@ -45,8 +46,22 @@ if (!Math.ceil10) {
     };
 }
 
- const pgadmin = {
+const pgadmin = {
+    init: function () {
+        fetch(`${API_Base_URL}/browser/config?key=${PGADMIN_INT_KEY}`).then(response => {
+            return response.json();
+        }).then(config => {
+            console.log(config);
+            Object.assign(pgadmin, config);
+        }).catch(error => {
+            console.error(error);
+        });
+        //     console.warn(res);
+        // getApiInstance().get('http://localhost:5050/browser/config').then(res => {
+        //     console.warn(res);
+        // });
 
+    },
     natural_sort: function (a, b, options) {
         options = options || {};
 

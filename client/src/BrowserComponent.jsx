@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState } from 'react';
 import ObjectBreadcrumbs from './components/ObjectBreadcrumbs';
 import Layout, { LayoutDocker, getDefaultGroup } from './helpers/Layout';
 import gettext from './gettext';
-// import ObjectExplorer from './tree/ObjectExplorer';
+import ObjectExplorer from './tree/ObjectExplorer';
 import Properties from './misc/properties/Properties';
 import SQL from './misc/sql/SQL';
 import Statistics from './misc/statistics/Statistics';
@@ -73,10 +73,10 @@ export default function BrowserComponent({pgAdmin}) {
             {
               size: 20,
               tabs: [
-                // LayoutDocker.getPanel({
-                //   id: BROWSER_PANELS.OBJECT_EXPLORER, title: gettext('Object Explorer'),
-                //   content: <ObjectExplorer />, group: 'object-explorer'
-                // }),
+                LayoutDocker.getPanel({
+                  id: BROWSER_PANELS.OBJECT_EXPLORER, title: gettext('Object Explorer'),
+                  content: <ObjectExplorer />, group: 'object-explorer'
+                }),
               ],
             },
             {

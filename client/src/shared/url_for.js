@@ -1,4 +1,7 @@
 
+import _ from 'lodash';
+
+
 export const endpoints = {
   'static': '/static/<path:filename>',
 
@@ -3021,5 +3024,23 @@ export  function url_for (endpoint, substitutions) {
 
   return interpolated;
 };
+
+export function generate_url(baseUrl, treeInfo, actionType, nodeType, pickFunction, itemDataID) {
+  let ref = '';
+  _.each(
+    _.sortBy(
+      _.pickBy(treeInfo, pickFunction),
+      function (treeInfoItems) {
+        return treeInfoItems.priority;
+      }
+    ),
+    function (treeInfoItems) {
+      ref = `${ref}/${encodeURI(treeInfoItems._id)}`;
+    }
+  );
+  ref = itemDataID ? `${ref}/${itemDataID}` : `${ref}/`;
+
+  return `${baseUrl}${nodeType}/${actionType}${ref}`;
+}
 
 export default url_for;

@@ -130,6 +130,27 @@ def current_user_info():
         mimetype=MIMETYPE_APP_JS
     )
 
+@blueprint.route("/current_user")
+@pgCSRFProtect.exempt
+@pga_login_required
+def current_user_json():
+    
+    res = {
+        'id': current_user.id,
+        'email': current_user.email,
+        'is_admin': current_user.has_role("Administrator"),
+        'name': 'postgres',
+        'allow_save_password': config.ALLOW_SAVE_PASSWORD and session.get('allow_save_password', None),
+        'allow_save_tunnel_password': config.ALLOW_SAVE_TUNNEL_PASSWORD and session.get('allow_save_password', None),
+        'auth_sources': ['internal'],
+        'current_auth_source': 'internal'
+    }
+    
+    return ajax_response(
+        response=res,
+        status=200
+    )
+
 
 @blueprint.route(
     '/user/', methods=['GET'], defaults={'uid': None}, endpoint='users'

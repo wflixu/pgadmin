@@ -1,18 +1,11 @@
-/////////////////////////////////////////////////////////////
-//
-// pgAdmin 4 - PostgreSQL Tools
-//
-// Copyright (C) 2013 - 2024, The pgAdmin Development Team
-// This software is released under the PostgreSQL Licence
-//
-//////////////////////////////////////////////////////////////
+
 
 import _ from 'lodash';
-import url_for from 'sources/url_for';
-import gettext from 'sources/gettext';
-import pgAdmin from 'sources/pgadmin';
+import url_for from '../shared/url_for';
+import gettext from '../gettext';
+import pgAdmin from '../pgadmin';
 import getApiInstance, { callFetch } from '../api_instance';
-import usePreferences from '../../../preferences/static/js/store';
+import usePreferences from '../shared/store';
 
 export const pgBrowser = pgAdmin.Browser = pgAdmin.Browser || {};
 
